@@ -2,7 +2,7 @@
     session_start();
     $user = "";
     if(!isset($_SESSION['user'])){
-        header("Location:auth.php?pg=signin");
+    header("Location:auth.php?p=signin");
         exit;
     }
     else{

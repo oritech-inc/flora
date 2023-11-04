@@ -1,28 +1,36 @@
-<main class="form-signin w-100 m-auto text-center bg-body-tertiary rounded-4">
-    <form id="frmLogin" >
-        <img class="mb-4 rounded-3" src="./../../img/brand/flora.png" alt="flora_trade_logo" width="180" height="100">
-        <h1 class="h2 mb-3 fw-bold">SIGNIN</h1>
+<h1 class="h1 mb-3 fw-bold">SIGNIN</h1>
+<form id="frmAuth">
 
-        <div class="form-floating">
-            <input type="email" class="form-control form-control-sm" id="txMail" placeholder="name@example.com" required autofocus>
-            <label for="txMail">Email address</label>
-        </div>
-        <div class="form-floating">
-            <input type="password" class="form-control" id="txPass" placeholder="Password" required>
-            <label for="txPass">Password</label>
-        </div>
+    <div class="form-floating">
+        <input type="email" class="form-control form-control-sm" id="txMail" name="email" placeholder="name@example.com" autocomplete="email" required autofocus>
+        <label for="txMail">Email address</label>
+    </div>
+    <div class="form-floating">
+        <input type="password" class="form-control" id="txPass" name="password" placeholder="Password" autocomplete="current-password" required>
+        <label for="txPass">Password</label>
+    </div>
+
+    <div class="d-flex justify-content-between">
 
         <div class="form-check text-start my-3">
-            <input class="form-check-input" type="checkbox" value="remember-me" id="txRemember">
-            <label class="form-check-label" for="txRemember">
+            <input class="form-check-input" type="checkbox" value="1" id="chRemember">
+            <label class="form-check-label" for="txRemember" style="cursor:pointer">
                 Remember me
             </label>
         </div>
-        <button class="btn btn-primary w-100 py-2" type="submit">Sign in</button>
-    </form>
-    <p class="mt-5 mb-3 text-body-secondary fixed-bottom text-center">
-        <a href="#" class="text-info">FMS,</a>
-        <a href="#" class="text-info">Flora Trade</a>
-        &copy; 2023
+        <a href="#" id="btForgot" type="button" class="mt-3 btLink" data-link="forgot">
+            Forgot password
+        </a>
+    </div>
+
+    <button class="btn btn-success btn-sm rounded-5 w-100 my-2" type="submit">
+        Submit <i class="bi bi-arrow-bar-right fa-pull-right fa-lg mt-1"></i>
+    </button>
+    <hr>
+    <p class="">
+        Don't have an account yet?,
+        <a href="#" id="btRegister" type="button" class="btLink" data-link="signup">
+            Register now
+        </a>
     </p>
-</main>
+</form>

@@ -1,13 +1,18 @@
 <?php
 $prot = isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? 'https://' : 'http://';
 $host = $_SERVER['HTTP_HOST'];
-$root = $prot.$_SERVER['HTTP_HOST']."/flora/";
-$path = "/flora/auth.php";
+$root = $prot . $_SERVER['HTTP_HOST'] . "/flora/";
+$path = "/flora/auth";
 $url = $prot . $host . $path;
+$page = "";
 
-if (!isset($_GET['pg'])) {
-    $_GET['pg'] = "signin";
+if (!$_GET['p']) {
+    $page = "signin";
 }
+else{
+    $page = $_GET['p'];
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -29,10 +34,14 @@ if (!isset($_GET['pg'])) {
     <title>Flora Trade&reg; | Auth</title>
     <link rel="stylesheet" href="./css/site/main.css">
     <link rel="stylesheet" href="./css/site/auth.css">
-    <link rel="stylesheet" href="./css/bs/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/bs/dist/css/lumen.css">
     <link rel="stylesheet" href="./css/bs/icons/bootstrap-icons.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="./js/auth.js">
+    <link rel="stylesheet" href="./css/bs/dist/js/bootstrap.bundle.min.js">
     <style>
         body {
             background: url("./img/bg/auth.jpg") no-repeat center center fixed;
@@ -63,29 +72,39 @@ if (!isset($_GET['pg'])) {
     </style>
 </head>
 
-<body>
+<body class="d-flex align-items-center">
     <!--[if lt IE 7]>
         <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
-    <?php
-    switch ($_GET['pg']) {
-        case "signin":
-            // require_once("./views/auth/signin.php");
-            require_once("./views/alerts/error.php");
-            break;
-        case "register":
-            require_once("./views/auth/register.php");
-            break;
-        default:
-            require_once("./views/alerts/error.php");
-            break;
-    }
-    ?>
+    <main class="form-signin w-100 m-auto text-center bg-body-tertiary rounded-4">
+        <img class="mb-4 rounded-3" src="<?= $root ?>/img/brand/flora.png" alt="flora_trade_logo" width="180" height="100">
 
-    <script src="" async defer></script>
-    <link rel="stylesheet" href="./js/jquery.min.js">
-    <link rel="stylesheet" href="./js/auth.js">
-    <link rel="stylesheet" href="./css/bs/dist/js/bootstrap.bundle.min.js">
+        <?php
+        switch ($page) {
+            case "signin":
+                require_once("./views/auth/signin.php");
+                break;
+            case "signup":
+                require_once("./views/auth/register.php");
+            case "confirm":
+                require_once("./views/auth/confirm.php");
+            case "recover":
+                require_once("./views/auth/recover.php");
+                break;
+            default:
+                require_once("./views/alerts/error.php");
+                break;
+        }
+        include "./views/auth/auth.php";
+        ?>
+
+
+        <p class="mt-5 mb-3 text-body-secondary fixed-bottom text-center border-top-1">
+            <a href="https://freshmarksystems.co.za" target="_blank" class="text-warning fs-b h5">FMS,</a>
+            <a href="#" target="_blank" class="text-warning fs-b h5">Flora Trade</a>
+            &copy; 2023
+        </p>
+    </main>
 </body>
 
 </html>
