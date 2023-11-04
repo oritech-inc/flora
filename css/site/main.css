@@ -1,0 +1,22 @@
+::root{
+    --color-pr-green:#5E7153;
+    --color-pr-orange:#c66828;
+    --color-pr-brown:#783e19;
+
+    --color-sc-green:#a9b489;
+    --color-sc-brown:#f9ecc9;
+}
+*{
+    padding:0;
+    margin:0;
+    font: "ITC Avant Garde Gothic";
+}
+html,
+body {
+  height: 100%;
+}
+
+.btn-green{
+    background:var(--color-pr-green) !important;
+    color:white;
+}
