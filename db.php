@@ -1,7 +1,9 @@
 <?php
+$con = "";
+
 try {
     // Database connection parameters
-    $dsn = "mysql:host=localhost;dbname=your_database_name";
+    $dsn = "mysql:host=localhost;dbname=flora_db";
     $username = "root";
     $password = "";
 
@@ -11,9 +13,9 @@ try {
     // Set PDO error mode to exceptions
     $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-    echo "Connected to the database successfully!";
+    $con = "Connected to the database successfully!";
 } catch (PDOException $e) {
     // Handle connection errors
-    echo "Connection failed: " . $e->getMessage();
+   $con = "Connection failed: " . $e->getMessage();
 }
 ?>

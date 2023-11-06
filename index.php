@@ -1,6 +1,7 @@
 <?php
     session_start();
-    $user = "";
+$user = [];
+
     if(!isset($_SESSION['user'])){
     header("Location:auth.php?p=signin");
         exit;
